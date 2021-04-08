@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+
+# Testing
+coverage
+
+# Production
+public/*
+!public/favicon.ico
+
+# Misc
+.DS_Store
+*.log

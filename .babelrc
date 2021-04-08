@@ -1,0 +1,30 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": "3.0.0"
+      }
+    ],
+    "@babel/react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "@loadable/babel-plugin",
+    "@babel/proposal-class-properties",
+    "@babel/syntax-dynamic-import",
+    "@babel/plugin-proposal-optional-chaining",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"]
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
+}

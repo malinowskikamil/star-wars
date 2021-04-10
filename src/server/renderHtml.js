@@ -15,7 +15,7 @@ export default ({ head, extractor, htmlContent, initialState, styleTags }) => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600" rel="stylesheet" />
         ${head.title.toString()}
         ${head.base.toString()}
         ${head.meta.toString()}

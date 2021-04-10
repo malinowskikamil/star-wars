@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development PORT=3000 nodemon index.js",
-    "start": "cross-env NODE_ENV=production PORT=8080 ts-node --transpile-only --files .",
+    "start": "cross-env NODE_ENV=production PORT=8080 node index.js",
     "build": "yarn clean:build && cross-env NODE_ENV=production  webpack --progress --hide-modules --config ./tools/webpack/config.babel.js",
     "analyze": "yarn clean:build && cross-env NODE_ENV=analyze webpack -p --progress --hide-modules --config ./tools/webpack/config.babel.js",
     "test": "cross-env NODE_ENV=test jest",

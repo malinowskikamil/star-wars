@@ -27,7 +27,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
-  font-family: Poppins, sans-serif;
+  font-family: Source Sans Pro, sans-serif;
   box-sizing: border-box;
 }
 ol, ul {
@@ -45,7 +45,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+button{
+	border:none;
+	background: none;
+	outline: none;
+	cursor: pointer;
+}
 .btn{
 	display: inline-block;
 	text-decoration: none;

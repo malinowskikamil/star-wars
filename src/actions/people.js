@@ -77,10 +77,3 @@ export const fetchPeople = ({ page = 1, limit = 10, search = null }) => async di
     dispatch({ type: "PEOPLE_FAILURE", err: err.message });
   }
 };
-const shouldFetchPeople = ({ home }) => people.status !== "success";
-
-export const fetchPeopleIfNeed = query => (dispatch, getState) =>
-  new Promise(resolve => {
-    if (shouldFetchPeople(getState())) return resolve(dispatch(fetchPeople(query)));
-    return resolve(null);
-  });

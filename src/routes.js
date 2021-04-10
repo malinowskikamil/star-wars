@@ -1,7 +1,8 @@
 import queryString from "query-string";
 import App from "./app";
-import { NotFound, Home } from "./pages";
+import { NotFound, Home, Person } from "./pages";
 import { fetchPeople } from "./actions/people";
+import { fetchPerson } from "./actions/person";
 
 export default [
   {
@@ -16,6 +17,12 @@ export default [
             _parsedUrl: { query },
           },
         }) => [fetchPeople(queryString.parse(query))],
+      },
+      {
+        path: "/:id",
+        exact: true,
+        component: Person,
+        loadData: ({ params: { id } }) => [fetchPerson(id)],
       },
       {
         component: NotFound,

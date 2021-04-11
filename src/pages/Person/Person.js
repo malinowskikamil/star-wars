@@ -36,7 +36,7 @@ const Person = ({
   if (current_person === "failure") {
     return <NotFound />;
   }
-  const identifier = createPersonIdentifier({ name: current_person.name, height: current_person.height, eye_color: current_person.eye_color });
+  const identifier = createPersonIdentifier({ name: current_person?.name, height: current_person?.height, eye_color: current_person?.eye_color });
   const is_favorite = favorites?.includes(identifier);
 
   const species = current_person?.species?.[0];

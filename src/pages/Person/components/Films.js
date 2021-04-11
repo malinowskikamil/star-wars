@@ -7,8 +7,8 @@ const Films = ({ data }) =>
         <h2 className='basic-info__section-title'>Filmy</h2>
       </header>
       <div className='basic-info__grid'>
-        {data.map(({ director, producer, release_date, title }) => (
-          <div className='grid-item movie'>
+        {data?.map(({ director, producer, release_date, title }) => (
+          <div className='grid-item movie' key={title}>
             <p className='name'>{title}</p>
             <p>
               <span>Produkcja:</span>

@@ -7,7 +7,7 @@ const Vehicles = ({ data }) =>
         <h2 className='basic-info__section-title'>Pojazdy kosmiczne</h2>
       </header>
       <div className='basic-info__grid'>
-        {data.map(
+        {data?.map(
           ({
             model,
             name,
@@ -21,7 +21,7 @@ const Vehicles = ({ data }) =>
             passengers,
             max_atmosphering_speed,
           }) => (
-            <div className='grid-item'>
+            <div className='grid-item' key={`${model}-${name}`}>
               <p className='name'>
                 {name} - {model}
               </p>

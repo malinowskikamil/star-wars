@@ -8,39 +8,39 @@ const HomeWorld = ({ data }) => {
         <ul className='basic-info__list'>
           <li>
             <span>Nazwa:</span>
-            <span>{data.name}</span>
+            <span>{data?.name}</span>
           </li>
           <li>
             <span>Klimat:</span>
-            <span>{data.climate}</span>
+            <span>{data?.climate}</span>
           </li>
           <li>
             <span>Średnica:</span>
-            <span>{data.diameter}</span>
+            <span>{data?.diameter}</span>
           </li>
           <li>
             <span>Grawitacja:</span>
-            <span>{data.gravity}</span>
+            <span>{data?.gravity}</span>
           </li>
           <li>
             <span>Okres orbitalny:</span>
-            <span>{data.orbital_period}</span>
+            <span>{data?.orbital_period}</span>
           </li>
           <li>
             <span>Okres obrotu:</span>
-            <span>{data.rotation_period}</span>
+            <span>{data?.rotation_period}</span>
           </li>
           <li>
             <span>Populacja:</span>
-            <span>{data.population}</span>
+            <span>{data?.population}</span>
           </li>
           <li>
             <span>Powierzchnia wody:</span>
-            <span>{data.surface_water}</span>
+            <span>{data?.surface_water}</span>
           </li>
           <li>
             <span>Teren:</span>
-            <span>{data.terrain}</span>
+            <span>{data?.terrain}</span>
           </li>
         </ul>
       </header>

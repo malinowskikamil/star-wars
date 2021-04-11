@@ -2,7 +2,7 @@ import React from "react";
 
 const HomeWorld = ({ data }) => {
   return (
-    <section>
+    <section className='animated-section'>
       <header>
         <h2 className='basic-info__section-title'>Pochodzenie</h2>
         <ul className='basic-info__list'>

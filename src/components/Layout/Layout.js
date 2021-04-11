@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { Seo, Footer } from "./components";
+import { Seo } from "./components";
 
 import StyledLayout from "./styles";
 
@@ -9,7 +9,6 @@ const Layout = ({ meta, children }) => {
     <StyledLayout>
       <Seo meta={meta} />
       <main>{children}</main>
-      <Footer />
     </StyledLayout>
   );
 };

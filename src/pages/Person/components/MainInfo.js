@@ -2,7 +2,7 @@ import React from "react";
 
 const MainInfo = ({ data }) => {
   return (
-    <section>
+    <section className="animated-section">
       <header>
         <h1 className='basic-info__name'>{data?.name}</h1>
       </header>

@@ -7,12 +7,15 @@ const StyledLayout = styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   main {
-    min-height: calc(100vh - 50px);
+    min-height: 100vh;
   }
   .main-container {
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 20px;
+    @media screen and (max-width: 600px) {
+      padding: 0 10px;
+    }
   }
 `;
 

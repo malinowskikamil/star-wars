@@ -25,10 +25,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+*{
+	box-sizing: border-box;
+}
+
 body {
   line-height: 1;
   font-family: Source Sans Pro, sans-serif;
-  box-sizing: border-box;
+  
 }
 ol, ul {
 	list-style: none;
@@ -68,6 +72,25 @@ button{
 		transform: scale(0.95)
 	}
 }
+.btn-favorite {
+    transition: 0.2s;
+    svg {
+      path {
+        fill: rgb(255, 232, 31, 0.4);
+        transition: 0.4s;
+      }
+    }
+    &.fill {
+      svg {
+        path {
+          fill: #ffe81f;
+        }
+      }
+    }
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 export default GlobalStyle;

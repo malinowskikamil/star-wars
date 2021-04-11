@@ -8,9 +8,11 @@ const table_head = [
   { name: "Gatunek", id: "specie", sortable: false },
   { name: "Wzrost", id: "height", sortable: false },
   { name: "Kolor oczu", id: "eye-_olor", sortable: false },
+  { name: "", id: "favorite", sortable: false },
 ];
 
 const Table = ({ status, results }) => {
+  const [favorites, setFavorite] = useState([]);
   const [is_loaded, setLoaded] = useState(false);
   useEffect(() => {
     setLoaded(true);
@@ -22,7 +24,6 @@ const Table = ({ status, results }) => {
       window.localStorage.setItem("favorites", JSON.stringify(favorites));
     }
   }, [favorites]);
-  const [favorites, setFavorite] = useState([]);
 
   return (
     <StyledTable className={`${status === "loading" ? "loading" : ""}`}>
@@ -31,7 +32,6 @@ const Table = ({ status, results }) => {
           {table_head.map(({ name, id }) => (
             <th key={id}>{name}</th>
           ))}
-          <th></th>
         </tr>
       </thead>
       <tbody className='main-table__body'>

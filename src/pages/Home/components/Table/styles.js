@@ -41,25 +41,6 @@ const StyledTable = styled.table`
       }
     }
   }
-  .btn-favorite {
-    transition: 0.2s;
-    svg {
-      path {
-        fill: rgb(255, 232, 31, 0.4);
-        transition: 0.4s;
-      }
-    }
-    &.fill {
-      svg {
-        path {
-          fill: #ffe81f;
-        }
-      }
-    }
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
 `;
 
 export default StyledTable;

@@ -12,6 +12,7 @@ export default (state = {}, action) => {
         ...state,
         [action.id]: {
           status: "success",
+           timestamp: new Date().getTime(),
           ...action.data,
         },
       };

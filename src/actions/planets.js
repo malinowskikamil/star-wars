@@ -1,4 +1,5 @@
 import { api } from "utils/api";
+import { checkTimestamp } from "utils/helpers";
 
 export const fetchPlanets = id => async dispatch =>
   new Promise(async (resolve, reject) => {
@@ -13,7 +14,7 @@ export const fetchPlanets = id => async dispatch =>
     }
   });
 
-const shouldFetchPlanets = ({ planets }, id) => planets?.[id]?.status !== "success";
+const shouldFetchPlanets = ({ planets }, id) => planets?.[id]?.status !== "success" || checkTimestamp(planets?.[id].timestamp);
 
 export const fetchPlanetsIfNeeded = id => (dispatch, getState) =>
   new Promise(resolve => {

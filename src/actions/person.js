@@ -1,4 +1,5 @@
 import { api } from "utils/api";
+import { checkTimestamp } from "utils/helpers";
 import { fetchSpeciesIfNeeded } from "./species";
 import { fetchPlanetsIfNeeded } from "./planets";
 import { fetchFilmsIfNeeded } from "./films";
@@ -22,7 +23,7 @@ export const fetchPerson = id => async (dispatch, getState) => {
   }
 };
 
-const shouldFetchPerson = ({ person }, id) => person?.[id]?.status !== "success";
+const shouldFetchPerson = ({ person }, id) => person?.[id]?.status !== "success"|| checkTimestamp(person?.[id].timestamp);
 
 export const fetchPersonIfNeeded = id => (dispatch, getState) => {
   if (shouldFetchPerson(getState(), id)) return dispatch(fetchPerson(id));

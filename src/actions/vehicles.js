@@ -1,4 +1,5 @@
 import { api } from "utils/api";
+import { checkTimestamp } from "utils/helpers";
 
 export const fetchVehicles = id => async dispatch =>
   new Promise(async (resolve, reject) => {
@@ -13,7 +14,7 @@ export const fetchVehicles = id => async dispatch =>
     }
   });
 
-const shouldFetchVehicles = ({ vehicles }, id) => vehicles?.[id]?.status !== "success";
+const shouldFetchVehicles = ({ vehicles }, id) => vehicles?.[id]?.status !== "success" || checkTimestamp(vehicles?.[id].timestamp);
 
 export const fetchVehiclesIfNeeded = id => (dispatch, getState) =>
   new Promise(resolve => {

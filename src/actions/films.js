@@ -1,4 +1,5 @@
 import { api } from "utils/api";
+import { checkTimestamp } from "utils/helpers";
 
 export const fetchFilms = id => async dispatch =>
   new Promise(async (resolve, reject) => {
@@ -13,7 +14,7 @@ export const fetchFilms = id => async dispatch =>
     }
   });
 
-const shouldFetchFilms = ({ films }, id) => films?.[id]?.status !== "success";
+const shouldFetchFilms = ({ films }, id) => films?.[id]?.status !== "success" || checkTimestamp(films?.[id].timestamp);
 
 export const fetchFilmsIfNeeded = id => (dispatch, getState) =>
   new Promise(resolve => {

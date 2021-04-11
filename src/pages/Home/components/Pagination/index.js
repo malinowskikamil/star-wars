@@ -14,7 +14,7 @@ const Pagination = ({ total_pages = 10, limit = 10, current_page = 1, count = 0,
   };
   return (
     <StyledPagination>
-      <StyledPagination className='pagination-left'>
+      <div className='pagination-left'>
         <button onClick={() => handleSetPage(undefined)} className='pagination-item arrow' disabled={current_page < 2}>
           <svg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'>
             <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
@@ -99,7 +99,7 @@ const Pagination = ({ total_pages = 10, limit = 10, current_page = 1, count = 0,
             </g>
           </svg>
         </button>
-      </StyledPagination>
+      </div>
       <div className='pagination-right'>
         <select className='selectbox' defaultValue={limit} onChange={({ target: { value } }) => handleSelectChange(value)}>
           {limits.map(item => (

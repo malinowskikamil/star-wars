@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 const StyledSearch = styled.div`
-  margin-bottom: 10px;
-  max-width: 200px;
+  max-width: 300px;
+  margin-bottom: 30px;
   input {
     padding: 9px;
+    border: none;
     border-radius: 4px;
     font-family: Source Sans Pro, sans-serif;
     width: 100%;
@@ -12,10 +13,13 @@ const StyledSearch = styled.div`
     font-size: 15px;
     letter-spacing: 0.5px;
     line-height: 20px;
-    transition: 0.2s;
+    transition: box-shadow 0.2s;
     &:focus {
-      border-color: #ffe81f;
+      box-shadow: 0 0 10px #ffe81f;
     }
+  }
+  @media screen and (max-width: 800px) {
+    margin: 0 auto 30px;
   }
 `;
 

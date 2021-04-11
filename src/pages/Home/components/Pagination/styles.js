@@ -10,8 +10,6 @@ const StyledPagination = styled.div`
       display: flex;
       align-items: center;
     }
-    &-right {
-    }
     &-item {
       cursor: pointer;
       display: flex;
@@ -65,6 +63,12 @@ const StyledPagination = styled.div`
     font-size: 13px;
     font-weight: 500;
     color: #ffe81f;
+  }
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    .pagination-left{
+      margin-bottom: 20px;
+    }
   }
 `;
 

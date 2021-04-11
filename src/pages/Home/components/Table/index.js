@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import StyledTable from "./styles";
 const table_head = [
-  { name: "Lp", id: "id", sortable: true },
+  { name: "Lp.", id: "id", sortable: true },
   { name: "Nazwa", id: "name", sortable: true },
   { name: "Gatunek", id: "specie", sortable: false },
   { name: "Wzrost", id: "height", sortable: false },
@@ -39,14 +39,14 @@ const Table = ({ status, results }) => {
           const is_favorite = favorites?.includes(identifier);
           return (
             <tr key={id}>
-              <td>{id}</td>
-              <td>
+              <td className='lp-cell'>{id}</td>
+              <td data-label='Nazwa'>
                 <Link to={`/${id}`}>{name}</Link>
               </td>
-              <td>{species?.length > 0 ? species.map(({ name }) => name).join(", ") : "-"}</td>
-              <td>{height}</td>
-              <td>{eye_color}</td>
-              <td>
+              <td data-label='Gatunek'>{species?.length > 0 ? species.map(({ name }) => name).join(", ") : "-"}</td>
+              <td data-label='Wzrost'>{height}</td>
+              <td data-label='kolor oczu'>{eye_color}</td>
+              <td className='favorite-cell'>
                 <button
                   type='button'
                   className={`btn-favorite ${is_favorite ? "fill" : ""}`}

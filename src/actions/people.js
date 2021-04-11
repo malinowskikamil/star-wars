@@ -1,5 +1,6 @@
 import { api, createMeta } from "utils/api";
 import { createPersonIdentifier } from "utils/helpers";
+import { fetchSpeciesIfNeeded } from "./species";
 
 const createApiPagination = (page, limit) => {
   const api_limit = 10;
@@ -23,7 +24,7 @@ const createApiPagination = (page, limit) => {
   return arr;
 };
 
-export const fetchPeople = ({ page = 1, limit = 10, search = null }) => async dispatch => {
+export const fetchPeople = ({ page = 1, limit = 10, search = null }) => async (dispatch, getState) => {
   dispatch({ type: "PEOPLE_LOADING" });
   let count = 0;
   let index = 0;
@@ -58,18 +59,12 @@ export const fetchPeople = ({ page = 1, limit = 10, search = null }) => async di
         }
       });
     });
-    const all_species = await Promise.all(
-      all_species_ids.map(
-        spec =>
-          new Promise(async resolve => {
-            const { data } = await api.get(`/species/${spec}/`);
-            resolve({ ...data, id: spec });
-          })
-      )
-    );
+
+    await Promise.all(all_species_ids.map(spec => dispatch(fetchSpeciesIfNeeded(spec))));
+
     results = results.map(item => ({
       ...item,
-      species: item.species?.length > 0 ? item.species.map(spec => all_species.find(({ id }) => id === spec)) : [],
+      species: item.species?.length > 0 ? item.species.map(spec => getState().species?.[spec]) : [],
     }));
     const meta = createMeta({ count, page: Number(page), limit: Number(limit) });
     dispatch({ type: "PEOPLE_SUCCESS", data: { results, meta } });

@@ -1,23 +1,21 @@
 import { api } from "utils/api";
-import { createPersonIdentifier } from "utils/helpers";
+import { fetchSpeciesIfNeeded } from "./species";
+import { fetchPlanetsIfNeeded } from "./planets";
+import { fetchFilmsIfNeeded } from "./films";
+import { fetchVehiclesIfNeeded } from "./vehicles";
+import { fetchStarshipsIfNeeded } from "./starships";
 
-const getDetailsData = async urls => {
-  if (typeof urls === "object") {
-    return urls?.length > 0 ? await Promise.all(urls.map(url => api.get(url.replace("http://swapi.dev/api", "")).then(({ data }) => data))) : [];
-  }
-  return await api.get(urls.replace("http://swapi.dev/api", "")).then(({ data }) => data);
-};
+export const fetchPerson = id => async (dispatch, getState) => {
+  const { people } = getState();
 
-export const fetchPerson = id => async dispatch => {
   dispatch({ type: "PERSON_LOADING", id });
   try {
     const { data } = await api.get(`/people/${id}/`);
-    data.homeworld = await getDetailsData(data.homeworld);
-    data.films = await getDetailsData(data.films);
-    data.species = await getDetailsData(data.species);
-    data.vehicles = await getDetailsData(data.vehicles);
-    data.starships = await getDetailsData(data.starships);
-
+    data.homeworld = await dispatch(fetchPlanetsIfNeeded(data.homeworld.match(/\d+/)?.[0]));
+    data.films = await Promise.all(data.films.map(url => dispatch(fetchFilmsIfNeeded(url.match(/\d+/)?.[0]))));
+    data.species = await Promise.all(data.species.map(url => dispatch(fetchSpeciesIfNeeded(url.match(/\d+/)?.[0]))));
+    data.vehicles = await Promise.all(data.vehicles.map(url => dispatch(fetchVehiclesIfNeeded(url.match(/\d+/)?.[0]))));
+    data.starships = await Promise.all(data.starships.map(url => dispatch(fetchStarshipsIfNeeded(url.match(/\d+/)?.[0]))));
     dispatch({ type: "PERSON_SUCCESS", data, id });
   } catch (err) {
     dispatch({ type: "PERSON_FAILURE", err: err.message, id });
